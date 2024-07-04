@@ -1,0 +1,7 @@
+{
+  "name": "my-trip-planner-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
