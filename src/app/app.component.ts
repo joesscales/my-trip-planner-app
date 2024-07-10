@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
+import { TabsComponent } from './tabs/tabs.component';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   standalone: true,
-  imports: [IonApp, IonRouterOutlet],
+  imports: [TabsComponent, IonicModule],
 })
 export class AppComponent {
   constructor() {}
-}
+}  
