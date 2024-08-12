@@ -6,6 +6,8 @@ import { By } from '@angular/platform-browser';
 import { IonicModule } from '@ionic/angular';
 import { routes } from '../app.routes';
 import { TabsComponent } from './tabs.component';
+import { StoreModule } from '@ngrx/store';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe('Tabs Component', () => {
 
@@ -14,10 +16,12 @@ describe('Tabs Component', () => {
   let component: TabsComponent;
   
   beforeEach(async () => {
+
     await TestBed.configureTestingModule({
-      imports: [IonicModule.forRoot()],
+      imports: [IonicModule.forRoot(),  StoreModule.forRoot({})],
       providers: [
-        provideRouter(routes)
+        provideRouter(routes),
+        provideMockStore() // Provide a mock store
          ]
     }).compileComponents();
      harness = await RouterTestingHarness.create();

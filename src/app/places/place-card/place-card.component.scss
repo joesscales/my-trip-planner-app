@@ -1,0 +1,18 @@
+ion-card{
+    min-height: 113px;
+}
+
+.card-button-row{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.has-ellipsis{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 5px;
+    flex-direction: row;
+}

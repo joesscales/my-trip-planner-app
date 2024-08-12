@@ -1,31 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import {IonicModule } from '@ionic/angular'
-import { initApp } from '../../environments/firbaseConfig';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
+import { PlacesService } from '../services/places.service';
+import { IPlaceWithId } from '../models/place.model';
+import { PlacesListComponent } from '../places/places-list/places-list.component';
+import { CommonModule } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule],
+  imports: [IonicModule, PlacesListComponent, CommonModule],
 })
 export class HomePage implements OnInit {
 
-  private firestore = getFirestore(initApp);
-  
+  public top3Places$: Observable<IPlaceWithId[]>;
 
-  constructor() { }
+  constructor(
+    private placesService: PlacesService
+  ) { }
+
 
   async getData() {
-    const querySnapshot = await getDocs(collection(this.firestore, "edinburgh-places"));
-    querySnapshot.forEach((doc) => {
-
-      if(doc.exists() && doc.data()) {
-        console.log('Got name:', doc.data().name)
-
-      }
-    });
+    this.top3Places$ = this.placesService.getTopThreeMostViewed();
   }
 
   ngOnInit(): void {

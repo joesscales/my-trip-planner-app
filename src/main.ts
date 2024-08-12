@@ -4,8 +4,9 @@ import { IonicRouteStrategy, provideIonicAngular } from '@ionic/angular/standalo
 
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+import { tripReducer } from './app/trip-state/trip.reducer';
+import { provideStore } from '@ngrx/store';
 
-import { initAnalytics, initApp } from './environments/firbaseConfig';
 
 
 
@@ -13,11 +14,9 @@ bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
+    provideStore({ trip: tripReducer }),
     provideRouter(routes, withPreloading(PreloadAllModules)),
   ],
 });
 
 
-// Not necessary below but just to help visualise firebase init
-const app = initApp
-const analytics = initAnalytics;

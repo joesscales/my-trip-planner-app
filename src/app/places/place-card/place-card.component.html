@@ -1,0 +1,30 @@
+<ion-card *ngIf="place && place.data" (click)="goToPlace()" button="true">
+  <ion-card-header [ngClass]="{'has-ellipsis': onTripPage}">
+    
+    <ion-card-title>{{place.data.name}}</ion-card-title>
+    <ion-buttons *ngIf="onTripPage">
+      
+      <ng-container *ngIf="!isReorder">
+        <ion-button  (click)="presentActionSheet($event)">
+          <ion-icon name="ellipsis-vertical"></ion-icon>
+        </ion-button>
+        
+      </ng-container>
+     
+      <ion-reorder slot="end" *ngIf="isReorder"></ion-reorder>
+     
+    </ion-buttons>
+
+  </ion-card-header>
+
+  <ion-card-content>
+   {{place.data.description}}
+  </ion-card-content>
+  <div class="card-button-row">
+
+    <ion-button *ngIf="!place.data.isInTrip" fill="clear" id="add-button-place-card" (click)="addToTrip($event)">Add</ion-button>
+  </div>
+
+</ion-card>
+
+

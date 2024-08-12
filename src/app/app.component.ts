@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TabsComponent } from './tabs/tabs.component';
 import { IonicModule } from '@ionic/angular';
+import { initAnalytics, initApp } from '../environments/firbaseConfig';
+
 
 @Component({
   selector: 'app-root',
@@ -9,5 +11,11 @@ import { IonicModule } from '@ionic/angular';
   imports: [TabsComponent, IonicModule],
 })
 export class AppComponent {
+
+
+
+// Not necessary below but just to help visualise firebase init
+public app = initApp
+public analytics = initAnalytics;
   constructor() {}
 }  

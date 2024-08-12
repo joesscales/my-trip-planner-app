@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="canGoBack">
+      <ion-button (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+   
+    <ion-title *ngIf="place" [ngClass]="canGoBack ? 'with-back-button':''">
+      {{place.data.name}}
+    </ion-title>
+    <ion-title *ngIf="!place">
+      Not found
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title *ngIf="place">
+        {{place.data.name}}
+      </ion-title>
+      <ion-title *ngIf="!place">
+        Not found
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+
+  </div>
+</ion-content>
+
+

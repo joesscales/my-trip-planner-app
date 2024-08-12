@@ -1,0 +1,33 @@
+<ion-item *ngIf="onTripPage && places && places.length > 1" lines="none">
+  <ion-toggle justify="end" [checked]="isReorder" (ionChange)="toggleChange($event)">Reorder trip</ion-toggle>
+</ion-item>
+
+
+<cdk-virtual-scroll-viewport
+*ngIf="!isReorder"
+itemSize="113"
+minBufferPx="900"
+maxBufferPx="1350">
+<app-place-card 
+*cdkVirtualFor="let place of places"
+[place]="place"
+[onTripPage]="onTripPage">
+</app-place-card>
+</cdk-virtual-scroll-viewport>
+
+<ion-list *ngIf="isReorder">
+ 
+  <ion-reorder-group [disabled]="false" (ionItemReorder)="doReorder($event)">
+    <app-place-card 
+    *ngFor="let place of places"
+    [place]="place"
+    [onTripPage]="onTripPage"
+    [isReorder]="true">
+    </app-place-card>
+  </ion-reorder-group>
+</ion-list>
+
+ 
+
+
+

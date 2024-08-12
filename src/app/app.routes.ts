@@ -22,4 +22,15 @@ export const routes: Routes = [
       import('./trip/trip.component')
           .then(m => m.TripComponent)
 },
+{
+  path: 'place',
+  redirectTo: 'home',
+  pathMatch: 'full',
+},
+{
+  path: 'place/:placeId',
+  loadComponent: () => 
+    import('./places/place-view/place-view.component')
+        .then(m => m.PlaceViewComponent)
+}
 ];
