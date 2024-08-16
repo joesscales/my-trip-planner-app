@@ -5,6 +5,7 @@ import { TripService } from '../services/trip.service';
 import { PlacesListComponent } from '../places/places-list/places-list.component';
 import { IonicModule} from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../shared/header/header.component';
 
 @Component({
   selector: 'app-trip',

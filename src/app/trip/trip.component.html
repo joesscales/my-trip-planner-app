@@ -1,21 +1,22 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      My Trip
-    </ion-title>
+    <ion-title>Current Trip</ion-title>
+    <ion-buttons slot="end">
+      <ion-menu-toggle>
+        <ion-button class="circular-small-button">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-menu-toggle>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">My Trip</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+ 
 
   <div id="container">
     <ng-container *ngIf="myTripSignal() as places">
-      <app-places-list  [places]="places" [onTripPage]="true"></app-places-list>
+      <app-places-list  [places]="places" [parentPage]="'trip'"></app-places-list>
     </ng-container>
   </div>
 </ion-content>

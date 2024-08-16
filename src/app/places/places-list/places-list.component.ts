@@ -6,6 +6,8 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 import { Subscription } from 'rxjs';
 import { TripService } from 'src/app/services/trip.service';
 import { CommonModule } from '@angular/common';
+import { InTripDirective } from 'src/app/directives/in-trip.directive';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-places-list',
@@ -18,12 +20,13 @@ import { CommonModule } from '@angular/common';
 export class PlacesListComponent  implements OnInit, OnChanges {
 
   constructor(
-    private tripService: TripService
+    private tripService: TripService,
+    private router: Router
   ) {
     effect(() => {
       this.trip = this.tripService.tripSignal();
       // Only on other pages as any changes to this will be handled in onChanges on the trip page, due to the places being the trip signal. 
-      if (!this.onTripPage) {
+      if (!this.isReorder) {
         this.updatePlaces();
       }
     });
@@ -34,7 +37,7 @@ export class PlacesListComponent  implements OnInit, OnChanges {
   public isReorder: boolean = false;
 
   @Input() places: IPlaceWithId[];
-  @Input() onTripPage: boolean;
+  @Input() parentPage: 'trip' | 'home' | 'explore';
 
   toggleChange(event: CustomEvent) {
     this.isReorder = event.detail.checked;
@@ -88,7 +91,9 @@ export class PlacesListComponent  implements OnInit, OnChanges {
    }
 
 
-
+toExplore() {
+  this.router.navigateByUrl('/explore');
+}
 
   ngOnInit() {
       //this.getTrip();
@@ -96,8 +101,9 @@ export class PlacesListComponent  implements OnInit, OnChanges {
   
 
    ngOnChanges(changes: SimpleChanges): void {
+    console.log('hello', this.parentPage);
     // Only needed as when updating the trip in another page, the effect wont work as the this.places won't be in view yet so it will have none to .some in updatePlaces.
-    if (changes.places &&  !this.isReorder && this.onTripPage) { 
+    if (changes.places &&  !this.isReorder) { 
         this.updatePlaces();
     }
   } 

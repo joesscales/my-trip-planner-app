@@ -34,12 +34,79 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+/* @import '@ionic/angular/css/palettes/dark.system.css'; */
 
 
 #container {
     max-width: 480px;
     width: 100%;
     margin: auto;
+    height: 100%;
+    background: transparent;
   }
 
+  ion-content{
+    --background: #f3f3f3;
+  }
+
+  .mb-0{
+    margin-bottom: 0px;
+  }
+
+
+  .searchbar{
+    padding-inline-start: 20px;
+    padding-inline-end: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    --border-radius: 44px!important;
+    --box-shadow: none!important;
+    .searchbar-input-container{
+      border-radius: 44px;
+      border: 1px solid var(--app-grey);
+    }
+  }
+
+ion-menu{
+  --min-width: 400px;
+  --max-width: 100%;
+}
+
+ion-header{
+  box-shadow: none!important;
+  ion-toolbar{
+    --background:#f3f3f3;
+  }
+}
+
+  ion-item{
+    --background: transparent;
+  }
+
+  .grey-icon{
+    color:var(--app-grey);
+}
+
+
+.spinner{
+  margin-top:20px;
+  text-align: center;
+  ion-spinner{
+     width: 50px;
+     height: 50px;
+     --color: var(--app-grey);
+  }
+}
+
+.circular-small-button{    
+  --border-radius: 50%!important;
+  height: 36px!important;
+  width: 36px!important;
+  --padding-start: 0px!important;
+  --padding-end: 0px!important;
+  &.smaller{
+    height: 26px !important;
+    min-height: 26px !important;
+    width: 26px !important;
+  }
+}

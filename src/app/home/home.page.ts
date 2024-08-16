@@ -5,20 +5,22 @@ import { IPlaceWithId } from '../models/place.model';
 import { PlacesListComponent } from '../places/places-list/places-list.component';
 import { CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
+import { HeaderComponent } from '../shared/header/header.component';
+import { HeaderService } from '../services/header.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
   standalone: true,
-  imports: [IonicModule, PlacesListComponent, CommonModule],
+  imports: [IonicModule, PlacesListComponent, CommonModule, HeaderComponent],
 })
 export class HomePage implements OnInit {
 
   public top3Places$: Observable<IPlaceWithId[]>;
 
   constructor(
-    private placesService: PlacesService
+    private placesService: PlacesService,
   ) { }
 
 

@@ -38,8 +38,8 @@ describe('PlacesListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should correctly update places when onTripPage is true', () => {
-    component.onTripPage = true;
+  it('should correctly update places when parentPage is trip', () => {
+    component.parentPage = 'trip';
     component.ngOnChanges({
       places: {
         currentValue: demoPlaces,

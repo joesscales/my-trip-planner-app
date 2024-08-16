@@ -1,12 +1,12 @@
-<ion-card *ngIf="place && place.data" (click)="goToPlace()" button="true">
-  <ion-card-header [ngClass]="{'has-ellipsis': onTripPage}">
+<ion-card *ngIf="place && place.data" (click)="openPlace()" [button]="parentPage !== 'trip'" [appInTrip]= " parentPage !== 'trip' && place.data.isInTrip ">
+  <ion-card-header [ngClass]="{'has-ellipsis': parentPage === 'trip'}">
     
     <ion-card-title>{{place.data.name}}</ion-card-title>
-    <ion-buttons *ngIf="onTripPage">
+    <ion-buttons *ngIf=" parentPage === 'trip'">
       
       <ng-container *ngIf="!isReorder">
-        <ion-button  (click)="presentActionSheet($event)">
-          <ion-icon name="ellipsis-vertical"></ion-icon>
+        <ion-button class="circular-small-button smaller" (click)="presentActionSheet($event)">
+          <ion-icon class="grey-icon" name="ellipsis-vertical"></ion-icon>
         </ion-button>
         
       </ng-container>
@@ -22,7 +22,9 @@
   </ion-card-content>
   <div class="card-button-row">
 
-    <ion-button *ngIf="!place.data.isInTrip" fill="clear" id="add-button-place-card" (click)="addToTrip($event)">Add</ion-button>
+    <ion-button class="circular-small-button" *ngIf="!place.data.isInTrip" fill="clear" id="add-button-place-card" (click)="addToTrip($event)"><ion-icon name="add-circle-outline"></ion-icon></ion-button>
+    <ion-button class="circular-small-button" fill="clear" *ngIf="place.data.isInTrip && parentPage !=='trip'" (click)="toTrip($event)"><ion-icon class="grey-icon" name="map-outline"></ion-icon></ion-button>
+
   </div>
 
 </ion-card>

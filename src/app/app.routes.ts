@@ -17,10 +17,10 @@ export const routes: Routes = [
             .then(m => m.ExploreComponent)
 },
 {
-  path: 'trip',
+  path: 'my-trips',
   loadComponent: () => 
-      import('./trip/trip.component')
-          .then(m => m.TripComponent)
+      import('./my-trips/my-trips.component')
+          .then(m => m.MyTripsComponent)
 },
 {
   path: 'place',

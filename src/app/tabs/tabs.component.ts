@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
   selector: 'app-tabs',
   templateUrl: './tabs.component.html',
   styleUrls: ['./tabs.component.scss'],
-  imports: [IonicModule],
+  imports: [IonicModule, ],
   standalone: true,
 })
 export class TabsComponent  implements OnInit {

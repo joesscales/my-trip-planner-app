@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { TabsComponent } from './tabs/tabs.component';
 import { IonicModule } from '@ionic/angular';
 import { initAnalytics, initApp } from '../environments/firbaseConfig';
+import { TripComponent } from './trip/trip.component';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   standalone: true,
-  imports: [TabsComponent, IonicModule],
+  imports: [TabsComponent, IonicModule, TripComponent],
 })
 export class AppComponent {
 

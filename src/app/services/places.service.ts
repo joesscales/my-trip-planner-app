@@ -6,6 +6,7 @@ import { NavigationEnd, Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
+  
 })
 export class PlacesService implements OnDestroy {
 
@@ -78,8 +79,8 @@ export class PlacesService implements OnDestroy {
   getTopThreeMostViewed(): Observable<IPlaceWithId[]> {
     const colRef: CollectionReference<IPlace> = collection(this.firestore, 'edinburgh-places') as CollectionReference<IPlace>;
 
-    // Create a query that orders by 'views' in descending order and limits to 3 results
-    const topThreeQuery = query(colRef, orderBy('views', 'asc'), limit(3));
+    // Create a query that orders by 'dateAdded' in descending order and limits to 3 results
+    const topThreeQuery = query(colRef, orderBy('dateAdded', 'desc'), limit(3));
 
     return from(getDocs(topThreeQuery)).pipe(
       map(snapshot => 

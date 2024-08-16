@@ -1,0 +1,48 @@
+<app-header [title]="'My Trips'"></app-header>
+
+<ion-content [fullscreen]="true">
+<div id="container">
+
+
+    <ng-container *ngIf="!myTrips">
+        <div class="ion-text-center spinner">
+            <ion-spinner name="circles"></ion-spinner>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="myTrips && myTrips.length === 0">
+        <div class="ion-text-center">
+            <p>You have no saved trips</p>
+            <ion-button  (click)="toExplore()" fill="outline" shape="round" >Explore Places</ion-button>
+
+        </div>
+      
+
+    </ng-container>
+
+
+    <ng-container *ngIf="myTrips && myTrips.length  > 0">
+        <p class="ion-text-center" *ngIf="myTrips.length > 1">View your {{myTrips.length}} saved trips below</p>
+        <p class="ion-text-center" *ngIf="myTrips.length === 1">View your saved trip below</p>
+
+        <ion-list>
+            <ion-item *ngFor="let trip of myTrips">
+                <ion-label>
+                  <h2>{{trip.data.title}}</h2>
+                  <p>{{trip.data.description}}</p>
+                </ion-label>
+    
+    
+               
+                <ion-icon slot="end" name="copy">3</ion-icon>   
+                <ion-text class="count">{{trip.data.tripPlaces.length}}</ion-text>
+              </ion-item>
+        </ion-list>
+    </ng-container>
+   
+   
+</div>
+</ion-content>
+
+
+
