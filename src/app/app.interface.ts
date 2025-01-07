@@ -1,4 +1,4 @@
-import { TripState } from './trip-state/trip.reducer';
+import { TripState } from './features/trip/trip-state/trip.reducer';
 
 export interface AppState {
   trip: TripState;

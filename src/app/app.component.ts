@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { TabsComponent } from './tabs/tabs.component';
+import { TabsComponent } from './core/layout/tabs/tabs.component';
 import { IonicModule } from '@ionic/angular';
 import { initAnalytics, initApp } from '../environments/firbaseConfig';
-import { TripComponent } from './trip/trip.component';
+import { TripComponent } from './features/trip/trip.component';
 
 
 @Component({

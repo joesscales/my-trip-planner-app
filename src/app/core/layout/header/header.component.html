@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start" *ngIf="canGoBack">
+      <ion-button (click)="goBack()">
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title [ngClass]="canGoBack ? 'with-back-button':''">
+      {{title}}
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-menu-toggle *ngIf="!inModal">
+        <!--<div class="notification-bubble" *ngIf="count$ | async as count">
+          <span>{{ count }}</span>
+        </div>-->
+        <ion-button class="circular-small-button menu-button">
+          <ion-icon name="map-outline"></ion-icon>
+         
+        </ion-button>
+      </ion-menu-toggle>
+      <ion-button *ngIf="inModal" (click)="close()" class="circular-small-button">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header> 
+
+
+
+
+
